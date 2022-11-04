@@ -16,4 +16,6 @@
 
     <string name="visit_profile">Visit Profile</string>
     <string name="bio">Bio</string>
+
+    <string name="user_details">User Details</string>
 </resources>

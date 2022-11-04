@@ -3,118 +3,131 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <include
+            android:id="@+id/layout_toolbar"
+            layout="@layout/layout_toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/user_details" />
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:padding="@dimen/margin_medium">
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_toolbar">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_user"
-                style="@style/CircularImage"
-                android:layout_width="@dimen/_80sdp"
-                android:layout_height="@dimen/_80sdp"
-                android:layout_marginTop="@dimen/margin_xxlarge"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_launcher_background" />
-
-            <TextView
-                android:id="@+id/tv_full_name"
-                style="@style/TextAppearance.AppTheme.HeadLine2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_user"
-                tools:text="The Octocat" />
-
-            <TextView
-                android:id="@+id/tv_username"
-                style="@style/TextAppearance.AppTheme.Headline3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_xsmall"
-                android:textColor="@color/gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_full_name"
-                tools:text="octocat" />
-
-
-            <Button
-                android:id="@+id/button_visit_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:drawableStart="@drawable/ic_arrow_right"
-                android:drawablePadding="@dimen/margin_small"
-                android:paddingVertical="@dimen/margin_small"
-                android:text="@string/visit_profile"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_username" />
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/layout_bio"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/button_visit_profile">
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:padding="@dimen/margin_medium">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_user"
+                    style="@style/CircularImage"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_marginTop="@dimen/margin_xxlarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_launcher_background" />
 
                 <TextView
-                    android:id="@+id/tv_label_bio"
+                    android:id="@+id/tv_full_name"
                     style="@style/TextAppearance.AppTheme.HeadLine2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/bio"
+                    android:layout_marginTop="@dimen/margin_small"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_send_money" />
+                    app:layout_constraintTop_toBottomOf="@+id/iv_user"
+                    tools:text="The Octocat" />
 
                 <TextView
-                    android:id="@+id/tv_bio"
-                    style="@style/TextAppearance.AppTheme.Body"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tv_username"
+                    style="@style/TextAppearance.AppTheme.Headline3"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_xsmall"
-                    tools:text="There once was..." />
+                    android:textColor="@color/gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_full_name"
+                    tools:text="octocat" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/layout_bio">
+                <Button
+                    android:id="@+id/button_visit_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:drawableStart="@drawable/ic_arrow_right"
+                    android:drawablePadding="@dimen/margin_small"
+                    android:paddingVertical="@dimen/margin_small"
+                    android:text="@string/visit_profile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_username" />
 
-                <TextView
-                    android:id="@+id/tv_website"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/layout_bio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/margin_small"
-                    app:drawableStartCompat="@drawable/ic_website"
-                    tools:text="https://github.com/octocat" />
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/button_visit_profile">
 
-                <TextView
-                    android:id="@+id/tv_address"
+                    <TextView
+                        android:id="@+id/tv_label_bio"
+                        style="@style/TextAppearance.AppTheme.HeadLine2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bio"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btn_send_money" />
+
+                    <TextView
+                        android:id="@+id/tv_bio"
+                        style="@style/TextAppearance.AppTheme.Body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_xsmall"
+                        tools:text="There once was..." />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:drawablePadding="@dimen/margin_small"
-                    app:drawableStartCompat="@drawable/ic_address"
-                    tools:text="San Francisco" />
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/layout_bio">
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+                    <TextView
+                        android:id="@+id/tv_website"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/margin_small"
+                        app:drawableStartCompat="@drawable/ic_website"
+                        tools:text="https://github.com/octocat" />
+
+                    <TextView
+                        android:id="@+id/tv_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:drawablePadding="@dimen/margin_small"
+                        app:drawableStartCompat="@drawable/ic_address"
+                        tools:text="San Francisco" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
