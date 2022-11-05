@@ -118,6 +118,15 @@
                         tools:text="https://github.com/octocat" />
 
                     <TextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:drawablePadding="@dimen/margin_small"
+                        app:drawableStartCompat="@drawable/ic_email"
+                        tools:text="ahmad.kadour222@gmail.com" />
+
+                    <TextView
                         android:id="@+id/tv_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -125,7 +134,6 @@
                         android:drawablePadding="@dimen/margin_small"
                         app:drawableStartCompat="@drawable/ic_address"
                         tools:text="San Francisco" />
-
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
