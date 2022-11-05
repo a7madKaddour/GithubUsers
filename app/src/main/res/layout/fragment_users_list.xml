@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            app:existence="@{!viewModel.isError}">
+            app:existence="@{!viewModel.isError || viewModel.usersLiveData != null}">
 
             <Toolbar
                 android:id="@+id/toolbar"
@@ -55,7 +55,7 @@
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
                     android:loadData="@{viewModel.usersLiveData}"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layoutManager=".presentation.util.customviews.LinearLayoutManger"
                     tools:itemCount="2"
                     android:bottomLoader="@{viewModel.isLoading &amp;&amp; viewModel.usersLiveData != null}"
                     tools:listitem="@layout/item_user" />
@@ -75,7 +75,7 @@
             layout="@layout/layout_error"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:existence="@{viewModel.isError}"
+            app:existence="@{viewModel.isError &amp;&amp; viewModel.usersLiveData == null}"
             app:onRefresh="@{() -> viewModel.fetchUsers()}"
             tools:visibility="gone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
