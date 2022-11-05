@@ -7,6 +7,8 @@ import android.widget.Toast
 import android.view.WindowManager
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.widget.Toolbar
+import com.ahmadkadddour.githubuser.R
 
 abstract class BaseActivity : AppCompatActivity() {
     protected var isActivityRunning = false
@@ -27,10 +29,26 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setView()
+        setupToolbar()
     }
 
     protected open fun setView() {
         setContentView(layoutId)
+    }
+
+    private fun setupToolbar() {
+        try {
+            val toolbar = findViewById<Toolbar>(R.id.toolbar)
+            if (toolbar != null) {
+                setSupportActionBar(toolbar)
+                changeToolbarTitle("")
+            }
+        } catch (ignored: Exception) {
+        }
+        try {
+            findViewById<View>(R.id.back_button).setOnClickListener { onBackPressed() }
+        } catch (ignored: Exception) {
+        }
     }
 
     protected fun showMessage(@StringRes messageResId: Int) {

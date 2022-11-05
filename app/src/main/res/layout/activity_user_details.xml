@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ahmadkadddour.githubuser.presentation.ui.details.UserDetailsViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -11,12 +18,13 @@
             android:id="@+id/layout_toolbar"
             layout="@layout/layout_toolbar"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="@string/user_details" />
+            app:title="@{@string/user_details}" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fillViewport="true"
+            android:visibility="@{!viewModel.isError}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_toolbar">
 
@@ -33,9 +41,12 @@
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_80sdp"
                     android:layout_marginTop="@dimen/margin_xxlarge"
+                    android:src="@{viewModel.userLiveData.imageUrl}"
+                    android:transitionName="@string/image_translation"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:placeHolder="@{@color/on_background}"
                     tools:src="@drawable/ic_launcher_background" />
 
                 <TextView
@@ -44,6 +55,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
+                    android:text="@{viewModel.userLiveData.username}"
+                    app:existence="@{viewModel.userLiveData.username != null}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iv_user"
@@ -55,22 +68,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_xsmall"
+                    android:text="@{viewModel.userLiveData.githubHandle}"
                     android:textColor="@color/gray"
+                    app:existence="@{viewModel.userLiveData.githubHandle != null}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_full_name"
                     tools:text="octocat" />
 
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_visit_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_large"
-                    android:drawableStart="@drawable/ic_arrow_right"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:paddingVertical="@dimen/margin_small"
+                    android:icon="@dimen/margin_xsmall"
+                    android:paddingHorizontal="@dimen/margin_small"
                     android:text="@string/visit_profile"
+                    android:textColor="@color/white"
+                    app:cornerRadius="8dp"
+                    app:existence="@{viewModel.userLiveData.githubUrl != null}"
+                    app:icon="@drawable/ic_arrow_right"
+                    app:iconGravity="textStart"
+                    app:iconPadding="@dimen/margin_small"
+                    app:iconTint="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_username" />
@@ -81,6 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_large"
                     android:orientation="vertical"
+                    app:existence="@{viewModel.userLiveData.bio != null}"
                     app:layout_constraintTop_toBottomOf="@id/button_visit_profile">
 
                     <TextView
@@ -98,6 +120,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_xsmall"
+                        android:text="@{viewModel.userLiveData.bio}"
                         tools:text="There once was..." />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -114,7 +137,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="@dimen/margin_small"
+                        android:text="@{viewModel.userLiveData.blogUrl}"
                         app:drawableStartCompat="@drawable/ic_website"
+                        app:existence="@{viewModel.userLiveData.blogUrl != null}"
                         tools:text="https://github.com/octocat" />
 
                     <TextView
@@ -123,7 +148,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_small"
                         android:drawablePadding="@dimen/margin_small"
+                        android:text="@{viewModel.userLiveData.email}"
                         app:drawableStartCompat="@drawable/ic_email"
+                        app:existence="@{viewModel.userLiveData.email != null}"
                         tools:text="ahmad.kadour222@gmail.com" />
 
                     <TextView
@@ -132,10 +159,35 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_small"
                         android:drawablePadding="@dimen/margin_small"
+                        android:text="@{viewModel.userLiveData.address}"
                         app:drawableStartCompat="@drawable/ic_address"
+                        app:existence="@{viewModel.userLiveData.address != null}"
                         tools:text="San Francisco" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                app:existence="@{viewModel.isLoading}" />
+        </RelativeLayout>
+
+        <include
+            layout="@layout/layout_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:existence="@{viewModel.isError}"
+            app:onRefresh="@{() -> viewModel.fetchUser(viewModel.handle)}"
+            tools:visibility="gone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

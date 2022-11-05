@@ -18,4 +18,6 @@
     <string name="bio">Bio</string>
 
     <string name="user_details">User Details</string>
+
+    <string name="image_translation">image_translation</string>
 </resources>

@@ -12,6 +12,10 @@
         <item name="textAppearanceBody1">@style/TextAppearance.AppTheme.Body</item>
 
         <item name="buttonStyle">@style/TextAppearance.AppTheme.Button</item>
+
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/change_image_transform</item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform</item>
     </style>
 
     <style name="TextAppearance.AppTheme.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
@@ -59,7 +63,7 @@
         <item name="android:padding">1dp</item> <!-- the stroke looks cropped without padding -->
         <item name="android:scaleType">centerCrop</item>
         <item name="android:background">@color/white</item>
-        <item name="strokeWidth">0.5dp</item>
+        <item name="strokeWidth">1dp</item>
         <item name="strokeColor">@color/gray</item>
         <item name="shapeAppearanceOverlay">@style/CircularImageAppearance</item>
     </style>

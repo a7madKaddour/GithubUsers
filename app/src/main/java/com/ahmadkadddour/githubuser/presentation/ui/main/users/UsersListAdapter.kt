@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import com.ahmadkadddour.githubuser.databinding.ItemUserBinding
 import com.ahmadkadddour.githubuser.domain.model.UserEntity
+import com.ahmadkadddour.githubuser.presentation.callback.OnItemViewClickedListener
 import com.ahmadkadddour.githubuser.presentation.callback.OnLoadingPageListener
 import com.ahmadkadddour.githubuser.presentation.ui.base.adapter.BaseViewHolder
 import com.ahmadkadddour.githubuser.presentation.ui.base.adapter.PagingListAdapter
 
 class UsersListAdapter(
+    private val onItemViewClickedListener: OnItemViewClickedListener<UserEntity>,
     context: Context,
     onLoadingPageListener: OnLoadingPageListener
 ) : PagingListAdapter<UserEntity, BaseViewHolder<UserEntity, *>>(context, onLoadingPageListener) {
@@ -23,10 +25,13 @@ class UsersListAdapter(
         }
     }
 
-    class UserViewHolder(
+    inner class UserViewHolder(
         binding: ItemUserBinding
     ) : BaseViewHolder<UserEntity, ItemUserBinding>(binding) {
         override fun onBind(item: UserEntity, position: Int) {
+            binding.root.setOnClickListener {
+                onItemViewClickedListener.onItemClicked(item, binding.ivItem)
+            }
             binding.user = item
             setFadeAnimation(binding.root);
         }
