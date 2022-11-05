@@ -5,17 +5,22 @@
 
     <data>
 
+        <variable
+            name="user"
+            type="com.ahmadkadddour.githubuser.domain.model.UserEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="@dimen/margin_small">
+        android:paddingVertical="@dimen/margin_small"
+        android:paddingHorizontal="@dimen/margin_medium">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_item"
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
+            android:src="@{user.imageUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,6 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_medium"
+            android:text="@{user.githubHandle}"
             app:layout_constraintBottom_toTopOf="@id/tv_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_item"
@@ -42,11 +48,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_xsmall"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_item"
             app:layout_constraintTop_toBottomOf="@id/tv_item_name"
-            android:visibility="gone"
             tools:text="01/03/2012" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -6,6 +6,7 @@ import com.ahmadkadddour.githubuser.data.exception.ServerException
 import com.ahmadkadddour.githubuser.data.exception.factory.ExceptionFactory
 import com.ahmadkadddour.githubuser.data.util.network.networkchecker.NetworkChecker
 import kotlinx.coroutines.flow.flow
+import org.json.JSONObject
 import retrofit2.Response
 import java.io.InterruptedIOException
 
@@ -42,7 +43,13 @@ class ApiProvider(
         if (response.isSuccessful && body != null) {
             return body
         } else {
-            throw exceptionFactory.fromCode(response.code(), response.message())
+            val errorBody = response.errorBody()?.string()
+            val message = if (errorBody != null) {
+                JSONObject(errorBody)
+                    .optString("message", "")
+                    .takeIf { it.isNotEmpty() }
+            } else null
+            throw exceptionFactory.fromCode(response.code(), message ?: response.message())
         }
     }
 }

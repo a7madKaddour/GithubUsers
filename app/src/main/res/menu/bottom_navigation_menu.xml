@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/fragmentUsers"
+        android:id="@+id/usersListFragment"
         android:icon="@drawable/selector_person"
         android:title="@string/bottom_users" />
 
     <item
-        android:id="@+id/fragmentSearchUser"
+        android:id="@+id/searchUserFragment"
         android:icon="@drawable/selector_search"
         android:title="@string/bottom_search_user" />
 </menu>

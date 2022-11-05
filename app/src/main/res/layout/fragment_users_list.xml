@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data></data>
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ahmadkadddour.githubuser.presentation.ui.main.users.UsersListViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,7 +18,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false">
+            android:clipToPadding="false"
+            app:existence="@{!viewModel.isError}">
 
             <Toolbar
                 android:id="@+id/toolbar"
@@ -36,18 +42,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:clipToPadding="false"
-                android:paddingHorizontal="@dimen/margin_large"
                 android:paddingTop="@dimen/margin_small"
+                android:visibility="@{!(viewModel.isLoading &amp;&amp; viewModel.usersLiveData == null)}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar">
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:refreshing="@{viewModel.isLoading &amp;&amp; viewModel.usersLiveData != null &amp;&amp; viewModel.refreshing}"
+                app:onRefreshListener="@{() -> viewModel.fetchUsers()}">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_users"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
+                    android:loadData="@{viewModel.usersLiveData}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="2"
+                    android:bottomLoader="@{viewModel.isLoading &amp;&amp; viewModel.usersLiveData != null}"
                     tools:listitem="@layout/item_user" />
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -55,6 +65,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isLoading &amp;&amp; viewModel.usersLiveData == null}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +75,8 @@
             layout="@layout/layout_error"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:existence="@{viewModel.isError}"
+            app:onRefresh="@{() -> viewModel.fetchUsers()}"
             tools:visibility="gone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
