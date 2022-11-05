@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/drawable-v24/ic_vector.xml" value="0.204" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/drawable/bg_bottom_nav_view.xml" value="0.246" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/drawable/bg_search_view.xml" value="0.2095" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/drawable/ic_address.xml" value="0.254" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/drawable/ic_arrow_back.xml" value="0.254" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/drawable/ic_arrow_right.xml" value="0.254" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/drawable/ic_email.xml" value="0.254" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/drawable/ic_exit_cross.xml" value="0.2095" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/drawable/ic_person.xml" value="0.246" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/drawable/ic_person_outline.xml" value="0.246" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/drawable/ic_search.xml" value="0.246" />
@@ -19,7 +21,7 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/font/roboto.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/layout/activity_user_details.xml" value="0.22" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/layout/fragment_search_user.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/layout/fragment_search_user.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/layout/fragment_user_details.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/layout/fragment_users_list.xml" value="0.33" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/GithubUser/app/src/main/res/layout/item_user.xml" value="0.33" />

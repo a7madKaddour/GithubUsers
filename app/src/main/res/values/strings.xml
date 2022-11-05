@@ -14,6 +14,7 @@
     <string name="bottom_users">Users</string>
     <string name="bottom_search_user">Search User</string>
 
+    <string name="search_hint">Search</string>
     <string name="visit_profile">Visit Profile</string>
     <string name="bio">Bio</string>
 
